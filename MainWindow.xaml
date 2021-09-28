@@ -5,8 +5,44 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CSharp_TP2"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        Title="DEcode" Height="450" Width="800">
 
-    </Grid>
+
+    <StackPanel>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <ComboBox x:Name = "comboBox" HorizontalAlignment = "Left" 
+            Margin = "0,50,0,0" VerticalAlignment = "Top" Width = "120">
+                <ComboBoxItem Content = "Method 1"/>
+                <ComboBoxItem Content = "Method 2"/>
+                <ComboBoxItem Content = "Method 3"/>
+            </ComboBox>
+            <TextBox Name="tbSettingText" VerticalAlignment="Top" Margin="50,50,50,0">
+                Enter your key if needed
+            </TextBox>
+            <ComboBox x:Name = "second" HorizontalAlignment = "Stretch" 
+            Margin = "0,50,0,0" VerticalAlignment = "Top" Width = "120">
+                <ComboBoxItem Content = "Method 1"/>
+                <ComboBoxItem Content = "Method 2"/>
+                <ComboBoxItem Content = "Method 3"/>
+            </ComboBox>
+        </StackPanel>
+        <StackPanel Margin="0,50,0,0">
+            <RichTextBox Name="inputText" VerticalAlignment="Stretch" Margin="0,0,0,50">
+                <FlowDocument>
+                    <Paragraph>
+                        This is flow content and you can
+                        <Bold>edit me!</Bold>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+            <RichTextBox Name="resultText" VerticalAlignment="Stretch">
+                <FlowDocument>
+                    <Paragraph>
+                        This is flow content and you can
+                        <Bold>edit me!</Bold>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+        </StackPanel>
+    </StackPanel>
 </Window>
