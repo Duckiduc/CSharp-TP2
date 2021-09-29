@@ -1,6 +1,6 @@
 ﻿using System;
   
-namespace CaesarCipher
+namespace CSharp_TP2
 {  
     class CaesarCipher
 	{  
