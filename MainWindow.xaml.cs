@@ -29,17 +29,20 @@ namespace CSharp_TP2
         private void Button_Click(object sender, RoutedEventArgs e) {
             
             // Encryption Method content
-            var method = comboBox.Text;
+            var method = methodBox.Text;
+
+            // Encryption or Decryption Text Box
+            var type = typeBox.Text;
 
             // Key content
-            var key = tbSettingText.Text;
+            var key = keyBox.Text;
 
             // Rich Text Box input
             TextRange richTextBoxInput = new TextRange(inputText.Document.ContentStart, inputText.Document.ContentEnd);
             var input = richTextBoxInput.Text;
 
             // Rich Text Box output
-            TextRange richTextBoxOutput = new TextRange(resultText.Document.ContentStart, resultText.Document.ContentEnd);
+            TextRange richTextBoxOutput = new TextRange(outputText.Document.ContentStart, outputText.Document.ContentEnd);
             var output = richTextBoxOutput.Text;
 
             // Check if one the needed value is empty or not
@@ -48,7 +51,21 @@ namespace CSharp_TP2
             switch (method) {
                 case "Caesar Cipher": 
                     // Call Caeser Cipher Method : Param needed input key method
-                    MessageBox.Show(message);
+                    // Check if the input can be parsed
+                    try {
+                        if(type == "Encrypt") {
+                            MessageBox.Show("Your result is : " + CaesarCipher.Encrypt(input, Int32.Parse(key)));
+                        } else {
+                            MessageBox.Show("Your result is : " + CaesarCipher.Decrypt(input, Int32.Parse(key)));
+                        }
+                        
+                    } catch (Exception exc) {
+                        if (exc.GetType().IsAssignableFrom(typeof(System.FormatException))) {
+                            MessageBox.Show("Please use a digit key !");
+                        } else {
+                            MessageBox.Show("An error occured ! Try again !");
+                        }
+                    }
                     break;
                 case "Vigenere Cipher": 
                     // Call Vigenere Cipher Method
