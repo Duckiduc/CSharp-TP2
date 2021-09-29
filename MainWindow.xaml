@@ -1,30 +1,22 @@
 ﻿<Window x:Class="CSharp_TP2.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:CSharp_TP2"
-        mc:Ignorable="d"
-        Title="DEcode" Height="450" Width="800">
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:CSharp_TP2" mc:Ignorable="d" Title="DEcode" Height="450" Width="800">
 
 
     <StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
             <ComboBox x:Name = "comboBox" HorizontalAlignment = "Left" 
             Margin = "0,50,0,0" VerticalAlignment = "Top" Width = "120">
-                <ComboBoxItem Content = "Method 1"/>
-                <ComboBoxItem Content = "Method 2"/>
-                <ComboBoxItem Content = "Method 3"/>
+                <ComboBoxItem Content = "Caesar Cipher"/>
+                <ComboBoxItem Content = "Vigenere Cipher"/>
+                <ComboBoxItem Content = "DES Encryption"/>
             </ComboBox>
             <TextBox Name="tbSettingText" VerticalAlignment="Top" Margin="50,50,50,0">
                 Enter your key if needed
             </TextBox>
-            <ComboBox x:Name = "second" HorizontalAlignment = "Stretch" 
-            Margin = "0,50,0,0" VerticalAlignment = "Top" Width = "120">
-                <ComboBoxItem Content = "Method 1"/>
-                <ComboBoxItem Content = "Method 2"/>
-                <ComboBoxItem Content = "Method 3"/>
-            </ComboBox>
         </StackPanel>
         <StackPanel Margin="0,50,0,0">
             <RichTextBox Name="inputText" VerticalAlignment="Stretch" Margin="0,0,0,50">
@@ -43,6 +35,7 @@
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
+            <Button Click="Button_Click" Content="(De)code text !!!" Grid.Column="2" Height="25" Width="200" HorizontalAlignment="Center"/>
         </StackPanel>
     </StackPanel>
 </Window>
