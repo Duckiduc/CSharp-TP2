@@ -8,15 +8,20 @@
 
     <StackPanel>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <ComboBox x:Name = "comboBox" HorizontalAlignment = "Left" 
+            <ComboBox x:Name = "methodBox" HorizontalAlignment = "Left" 
             Margin = "0,50,0,0" VerticalAlignment = "Top" Width = "120">
                 <ComboBoxItem Content = "Caesar Cipher"/>
                 <ComboBoxItem Content = "Vigenere Cipher"/>
                 <ComboBoxItem Content = "DES Encryption"/>
             </ComboBox>
-            <TextBox Name="tbSettingText" VerticalAlignment="Top" Margin="50,50,50,0">
+            <TextBox Name="keyBox" VerticalAlignment="Top" Margin="50,50,50,0">
                 Enter your key if needed
             </TextBox>
+            <ComboBox x:Name = "typeBox" HorizontalAlignment = "Left" 
+            Margin = "0,50,0,0" VerticalAlignment = "Top" Width = "120">
+                <ComboBoxItem Content = "Encrypt"/>
+                <ComboBoxItem Content = "Decrypt"/>
+            </ComboBox>
         </StackPanel>
         <StackPanel Margin="0,50,0,0">
             <RichTextBox Name="inputText" VerticalAlignment="Stretch" Margin="0,0,0,50">
@@ -27,7 +32,7 @@
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
-            <RichTextBox Name="resultText" VerticalAlignment="Stretch">
+            <RichTextBox Name="outputText" VerticalAlignment="Stretch">
                 <FlowDocument>
                     <Paragraph>
                         This is flow content and you can
