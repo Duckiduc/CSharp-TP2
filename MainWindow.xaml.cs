@@ -54,29 +54,15 @@ namespace CSharp_TP2
 
             switch (method) {
                 case "Caesar Cipher": 
-                    // Call Caeser Cipher Method : Param needed input key method
-                    // Check if the input can be parsed
-                    try {
-                        string result;
-                        if(type == "Encrypt") {              
-                            result = CaesarCipher.Encrypt(input, Int32.Parse(key));
-                        } else {
-                            result = CaesarCipher.Decrypt(input, Int32.Parse(key));
-                        } 
-                        outputText.Document.Blocks.Add(new Paragraph(new Run(result)));
-                    } catch (Exception exc) {
-                        if (exc.GetType().IsAssignableFrom(typeof(System.FormatException))) {
-                            MessageBox.Show("Caesar Cipher key must be a valid digit !");
-                        } else {
-                            MessageBox.Show("An error occured ! Try again !");
-                        }
-                    }
+                    outputText.Document.Blocks.Add(new Paragraph(new Run(CaesarCipher.Exec(input, type, key))));
                     break;
                 case "Vigenere Cipher": 
                     // Call Vigenere Cipher Method
+                    outputText.Document.Blocks.Add(new Paragraph(new Run(CaesarCipher.Exec(input, type, key))));
                     break;
                 case "DES Encryption": 
                     // Call DES Encryption Method
+                    outputText.Document.Blocks.Add(new Paragraph(new Run(CaesarCipher.Exec(input, type, key))));
                     break;
                 default: 
                     MessageBox.Show("Invalid Method");

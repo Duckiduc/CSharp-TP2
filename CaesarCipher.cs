@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Windows;
   
 namespace CSharp_TP2
 {  
@@ -39,5 +40,26 @@ namespace CSharp_TP2
 		{
 			return Encrypt(text, 26 - shift);
 		}
+
+		public static string Exec(string input, string type, string key) {
+            try {
+                string result;
+                if(type == "Encrypt") {              
+                    result = CaesarCipher.Encrypt(input, Int32.Parse(key));
+                } else {
+                    result = CaesarCipher.Decrypt(input, Int32.Parse(key));
+                } 
+                return result;
+                } 
+            catch (Exception exc) {
+                if (exc.GetType().IsAssignableFrom(typeof(System.FormatException))) {
+                    MessageBox.Show("Caesar Cipher key must be a valid digit !");
+                    return "Error";
+                } else {
+                    MessageBox.Show("An error occured ! Try again !");
+                    return "Error";
+                }
+            }
+        }
     }
 }
