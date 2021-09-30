@@ -30,38 +30,43 @@ namespace CSharp_TP2
             
             // Encryption Method content
             var method = methodBox.Text;
-
             // Encryption or Decryption Text Box
             var type = typeBox.Text;
-
             // Key content
             var key = keyBox.Text;
-
             // Rich Text Box input
             TextRange richTextBoxInput = new TextRange(inputText.Document.ContentStart, inputText.Document.ContentEnd);
             var input = richTextBoxInput.Text;
 
-            // Rich Text Box output
-            TextRange richTextBoxOutput = new TextRange(outputText.Document.ContentStart, outputText.Document.ContentEnd);
-            var output = richTextBoxOutput.Text;
+            // Checks
+            if(Utils.isInputInvalid(input)) {
+                MessageBox.Show(" Your input must contain only alpha characters ! ");
+                return;
+            } else if (!Utils.isKeyParsable(key)) {
+                MessageBox.Show(" Your key must be a digit !");
+                return;
+            } else if (Utils.isTypeInvalid(type)) {
+                MessageBox.Show(" Please select a valid type !");
+                return;
+            }
 
-            // Check if one the needed value is empty or not
-            var message = "You selected" + method + " Method ! \nYour key is : " + key + "\nYour input is : " + input ;
+            outputText.Document.Blocks.Clear();
 
             switch (method) {
                 case "Caesar Cipher": 
                     // Call Caeser Cipher Method : Param needed input key method
                     // Check if the input can be parsed
                     try {
-                        if(type == "Encrypt") {
-                            MessageBox.Show("Your result is : " + CaesarCipher.Encrypt(input, Int32.Parse(key)));
+                        string result;
+                        if(type == "Encrypt") {              
+                            result = CaesarCipher.Encrypt(input, Int32.Parse(key));
                         } else {
-                            MessageBox.Show("Your result is : " + CaesarCipher.Decrypt(input, Int32.Parse(key)));
-                        }
-                        
+                            result = CaesarCipher.Decrypt(input, Int32.Parse(key));
+                        } 
+                        outputText.Document.Blocks.Add(new Paragraph(new Run(result)));
                     } catch (Exception exc) {
                         if (exc.GetType().IsAssignableFrom(typeof(System.FormatException))) {
-                            MessageBox.Show("Please use a digit key !");
+                            MessageBox.Show("Caesar Cipher key must be a valid digit !");
                         } else {
                             MessageBox.Show("An error occured ! Try again !");
                         }
@@ -69,18 +74,14 @@ namespace CSharp_TP2
                     break;
                 case "Vigenere Cipher": 
                     // Call Vigenere Cipher Method
-                    MessageBox.Show(message);
                     break;
                 case "DES Encryption": 
                     // Call DES Encryption Method
-                    MessageBox.Show(message);
                     break;
                 default: 
                     MessageBox.Show("Invalid Method");
-                    break;
-                
+                    break;              
             }
-
         }
     }
 }
