@@ -39,13 +39,10 @@ namespace CSharp_TP2
             var input = richTextBoxInput.Text;
 
             // Checks
-            if(Utils.isInputInvalid(input)) {
+            if(!Utils.isInputValid(input)) {
                 MessageBox.Show(" Your input must contain only alpha characters ! ");
                 return;
-            } else if (!Utils.isKeyParsable(key)) {
-                MessageBox.Show(" Your key must be a digit !");
-                return;
-            } else if (Utils.isTypeInvalid(type)) {
+            } else if (!Utils.isTypeValid(type)) {
                 MessageBox.Show(" Please select a valid type !");
                 return;
             }
@@ -54,10 +51,18 @@ namespace CSharp_TP2
 
             switch (method) {
                 case "Caesar Cipher": 
+                    if (!Utils.isKeyParsable(key)) {
+                        MessageBox.Show(" Your key must be a digit !");
+                        break;
+                    }
                     outputText.Document.Blocks.Add(new Paragraph(new Run(CaesarCipher.Exec(input, type, key))));
                     break;
                 case "Vigenere Cipher": 
                     // Call Vigenere Cipher Method
+                    if (!Utils.isKeyValidString(key)) {
+                        MessageBox.Show(" Your key must be a digit !");
+                        break;
+                    }
                     outputText.Document.Blocks.Add(new Paragraph(new Run(CaesarCipher.Exec(input, type, key))));
                     break;
                 case "DES Encryption": 
