@@ -39,10 +39,7 @@ namespace CSharp_TP2
             var input = richTextBoxInput.Text;
 
             // Checks
-            if(!Utils.isInputValid(input)) {
-                MessageBox.Show(" Your input must contain only alpha characters ! ");
-                return;
-            } else if (!Utils.isTypeValid(type)) {
+            if (!Utils.isTypeValid(type)) {
                 MessageBox.Show(" Please select a valid type !");
                 return;
             }
@@ -54,20 +51,16 @@ namespace CSharp_TP2
                     if (!Utils.isKeyParsable(key)) {
                         MessageBox.Show(" Your key must be a digit !");
                         break;
-                    }
+                    } 
                     outputText.Document.Blocks.Add(new Paragraph(new Run(CaesarCipher.Exec(input, type, key))));
                     break;
                 case "Vigenere Cipher": 
                     // Call Vigenere Cipher Method
-                    if (!Utils.isKeyValidString(key)) {
-                        MessageBox.Show(" Your key must be a digit !");
-                        break;
-                    }
                     outputText.Document.Blocks.Add(new Paragraph(new Run(CaesarCipher.Exec(input, type, key))));
                     break;
                 case "DES Encryption": 
-                    // Call DES Encryption Method
-                    outputText.Document.Blocks.Add(new Paragraph(new Run(CaesarCipher.Exec(input, type, key))));
+                    // Todo : Check key & iv
+                    outputText.Document.Blocks.Add(new Paragraph(new Run(DesCipher.Exec(input, type, key, key)))); // second key to be changed to IV
                     break;
                 default: 
                     MessageBox.Show("Invalid Method");
