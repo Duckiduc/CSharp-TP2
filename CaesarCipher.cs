@@ -3,7 +3,7 @@ using System.Windows;
   
 namespace CSharp_TP2
 {  
-    class CaesarCipher
+    public class CaesarCipher
 	{  
 		public static char ShiftLetter(char character, int shift)
 		{
@@ -42,7 +42,8 @@ namespace CSharp_TP2
 		}
 
 		public static string Exec(string input, string type, string key) {
-            try {
+            try 
+			{
                 string result;
                 if(type == "Encrypt") {              
                     result = CaesarCipher.Encrypt(input, Int32.Parse(key));
@@ -50,13 +51,14 @@ namespace CSharp_TP2
                     result = CaesarCipher.Decrypt(input, Int32.Parse(key));
                 } 
                 return result;
-                } 
-            catch (Exception exc) {
+            } 
+            catch (Exception exc) 
+			{
                 if (exc.GetType().IsAssignableFrom(typeof(System.FormatException))) {
-                    MessageBox.Show("Caesar Cipher key must be a valid digit !");
+                    // MessageBox.Show("Caesar Cipher key must be a valid digit !");
                     return "Error";
                 } else {
-                    MessageBox.Show("An error occured ! Try again !");
+                    // MessageBox.Show("An error occured ! Try again !");
                     return "Error";
                 }
             }
