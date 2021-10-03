@@ -7,12 +7,14 @@
 
 
     <StackPanel>
+        <Button Click="HandleGenerateDesKey"  Content="Generate DES Key" Grid.Column="2" Height="25" Width="200" HorizontalAlignment="Center"/>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Center">
             <ComboBox x:Name = "methodBox" HorizontalAlignment = "Left" 
             Margin = "0,50,0,0" VerticalAlignment = "Top" Width = "120">
                 <ComboBoxItem Content = "Caesar Cipher"/>
                 <ComboBoxItem Content = "Vigenere Cipher"/>
-                <ComboBoxItem Content = "DES Encryption"/>
+                <ComboBoxItem Content = "DES Cipher"/>
+                <ComboBoxItem Content = "Morse Cipher"/>
             </ComboBox>
             <TextBox Name="keyBox" VerticalAlignment="Top" Margin="50,50,50,0">
                 Enter your key if needed
@@ -24,7 +26,7 @@
             </ComboBox>
         </StackPanel>
         <StackPanel Margin="0,50,0,0">
-            <RichTextBox Name="inputText" VerticalAlignment="Stretch" Margin="0,0,0,50">
+            <RichTextBox Name="inputText" VerticalAlignment="Stretch" Margin="50,0,50,50">
                 <FlowDocument>
                     <Paragraph>
                         This is flow content and you can
@@ -32,7 +34,7 @@
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
-            <RichTextBox Name="outputText" VerticalAlignment="Stretch">
+            <RichTextBox Name="outputText" VerticalAlignment="Stretch" Margin="50,0,50,0">
                 <FlowDocument>
                     <Paragraph>
                         This is flow content and you can
@@ -40,7 +42,9 @@
                     </Paragraph>
                 </FlowDocument>
             </RichTextBox>
-            <Button Click="Button_Click" Content="(De)code text !!!" Grid.Column="2" Height="25" Width="200" HorizontalAlignment="Center"/>
+            <StackPanel Margin="0,50,0,0">
+                <Button Click="HandleCipher" Content="(De)code text !!!" Grid.Column="2" Height="25" Width="200" HorizontalAlignment="Center"/>
+            </StackPanel>
         </StackPanel>
     </StackPanel>
 </Window>
