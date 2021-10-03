@@ -1,10 +1,30 @@
 using System;
   
-namespace VigenereCipher
+namespace CSharp_TP2
 {  
     class VigenereCipher
 	{
-		public static string Encrypt(string key, string text)
+		// Key must be a alpha string
+		public static string Exec(string input, string type, string key) 
+		{
+            try 
+			{
+                string result;
+                if(type == "Encrypt") {              
+                    result = VigenereCipher.Encrypt(input, key);
+                } else {
+                    result = VigenereCipher.Decrypt(input, key);
+                } 
+                return result;
+            } 
+            catch (Exception exc) 
+			{
+				// MessageBox.Show("Error : " + exc);
+                return "Error";
+            }
+        }
+
+		public static string Encrypt(string text, string key)
 		{
 			string EncryptedText = string.Empty;
 			for (int i = 0; i < text.Length; i++)
@@ -30,7 +50,7 @@ namespace VigenereCipher
 			return EncryptedText;
 		}
 
-		public static string Decrypt(string key, string text)
+		public static string Decrypt(string text, string key)
 		{
 			string DecryptedText = string.Empty;
 			for (int i = 0; i < text.Length; i++)

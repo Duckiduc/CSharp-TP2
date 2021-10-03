@@ -26,7 +26,7 @@ namespace CSharp_TP2
             InitializeComponent();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) {
+        private void HandleCipher(object sender, RoutedEventArgs e) {
             
             // Encryption Method content
             var method = methodBox.Text;
@@ -56,16 +56,32 @@ namespace CSharp_TP2
                     break;
                 case "Vigenere Cipher": 
                     // Call Vigenere Cipher Method
-                    outputText.Document.Blocks.Add(new Paragraph(new Run(CaesarCipher.Exec(input, type, key))));
+                    if (!Utils.isValidString(key)) {
+                        MessageBox.Show(" Your key must contain alpha characters !");
+                        break;
+                    } 
+                    outputText.Document.Blocks.Add(new Paragraph(new Run(VigenereCipher.Exec(input, type, key.ToLower()))));
                     break;
-                case "DES Encryption": 
+                case "Morse Cipher": 
+                    // Check validity of input
+                    outputText.Document.Blocks.Add(new Paragraph(new Run(MorseCipher.Exec(input.ToUpper(), type))));
+                    break;
+                case "DES Cipher": 
                     // Todo : Check key & iv
-                    outputText.Document.Blocks.Add(new Paragraph(new Run(DesCipher.Exec(input, type, key, key)))); // second key to be changed to IV
+                    outputText.Document.Blocks.Add(new Paragraph(new Run(DesCipher.Exec(input, type, key)))); // second key to be changed to IV
                     break;
                 default: 
                     MessageBox.Show("Invalid Method");
                     break;              
             }
+        }
+
+        private void HandleGenerateDesKey(object sender, RoutedEventArgs e) 
+        {
+            if(methodBox.Text != "DES Cipher") {
+                methodBox.Text = "DES Cipher";
+            }
+            keyBox.Text = DesCipher.GenerateDesKey();
         }
     }
 }
