@@ -5,6 +5,10 @@
 - Morse Cipher
 - DES Cipher
 
+## Releases
+
+The binary file .exe for windows is available in the release / tag section of GitHub
+
 ## Technologies
 
 Our project is a CSharp WPF using dotnet 5.0
