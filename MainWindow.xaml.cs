@@ -55,7 +55,6 @@ namespace CSharp_TP2
                     outputText.Document.Blocks.Add(new Paragraph(new Run(CaesarCipher.Exec(input, type, key))));
                     break;
                 case "Vigenere Cipher": 
-                    // Call Vigenere Cipher Method
                     if (!Utils.isValidString(key)) {
                         MessageBox.Show(" Your key must contain alpha characters !");
                         break;
@@ -63,11 +62,10 @@ namespace CSharp_TP2
                     outputText.Document.Blocks.Add(new Paragraph(new Run(VigenereCipher.Exec(input, type, key.ToLower()))));
                     break;
                 case "Morse Cipher": 
-                    // Check validity of input
                     outputText.Document.Blocks.Add(new Paragraph(new Run(MorseCipher.Exec(input.ToUpper(), type))));
                     break;
                 case "DES Cipher": 
-                    // Todo : Check key & iv
+                    //! NOT COMPLETE 
                     outputText.Document.Blocks.Add(new Paragraph(new Run(DesCipher.Exec(input, type, key)))); // second key to be changed to IV
                     break;
                 default: 
